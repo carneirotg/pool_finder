@@ -199,12 +199,13 @@ function renderPage(input: {
         .hero { padding: 8px 4px 18px; }
         .hero-top {
           display: flex;
-          align-items: flex-start;
+          align-items: center;
           justify-content: space-between;
           gap: 16px;
+          margin-bottom: 10px;
         }
         .eyebrow {
-          margin: 0 0 8px;
+          margin: 0;
           font-size: .9rem;
           font-weight: 700;
           letter-spacing: .08em;
@@ -214,16 +215,16 @@ function renderPage(input: {
         .locale-switcher {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 6px;
         }
         .locale-chip {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 8px;
-          min-width: 68px;
-          height: 42px;
-          padding: 0 10px 0 4px;
+          gap: 6px;
+          min-width: 56px;
+          height: 34px;
+          padding: 0 8px 0 3px;
           border-radius: 999px;
           border: 1px solid var(--line);
           background: rgba(255,255,255,0.7);
@@ -231,16 +232,16 @@ function renderPage(input: {
           color: var(--ink);
         }
         .locale-chip img {
-          width: 32px;
-          height: 32px;
+          width: 24px;
+          height: 24px;
           display: block;
           border-radius: 999px;
           flex: 0 0 auto;
         }
         .locale-chip span {
-          font-size: .85rem;
+          font-size: .72rem;
           font-weight: 800;
-          letter-spacing: .04em;
+          letter-spacing: .03em;
         }
         .locale-chip.selected {
           border-color: var(--accent-strong);
@@ -393,8 +394,8 @@ function renderPage(input: {
             grid-template-columns: 1fr;
           }
           .hero-top {
-            flex-direction: column;
-            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 10px;
           }
         }
         @media (min-width: 390px) {
