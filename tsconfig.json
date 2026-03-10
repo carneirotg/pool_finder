@@ -16,6 +16,5 @@
   "include": [
     "apps/**/*.ts",
     "packages/**/*.ts"
-  ],
-  "extends": "expo/tsconfig.base"
+  ]
 }
