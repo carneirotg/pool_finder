@@ -261,7 +261,7 @@ function renderPage(input: {
           justify-content: center;
         }
         .time-field input {
-          width: min(240px, 100%);
+          width: min(200px, 100%);
         }
         .actions {
           display: flex;
@@ -323,22 +323,51 @@ function renderPage(input: {
         .error { margin: 14px 2px 0; color: #9c2e1d; }
         .empty h2, .empty p { margin: 0; }
         .empty p { margin-top: 8px; color: var(--muted); }
-        @media (max-width: 639px) {
+        @media (max-width: 389px) {
           .summary {
             grid-template-columns: 1fr;
           }
         }
-        @media (min-width: 640px) {
+        @media (min-width: 390px) {
           .controls-cluster {
             width: auto;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
-            gap: 16px;
+            gap: 12px;
           }
+          .time-field {
+            width: auto;
+          }
+          .time-field input { width: 148px; }
+          .actions {
+            flex-wrap: nowrap;
+            gap: 8px;
+          }
+          .actions button, .actions a {
+            padding: 10px 14px;
+          }
+          .summary {
+            grid-template-columns: 1fr auto;
+          }
+          .summary-value {
+            font-size: 1rem;
+          }
+        }
+        @media (min-width: 520px) {
           .controls-cluster {
             gap: 16px;
+          }
+          .time-field input { width: 200px; }
+          .actions {
+            gap: 10px;
+          }
+          .actions button, .actions a {
+            padding: 12px 18px;
+          }
+          .summary-value {
+            font-size: 1.1rem;
           }
         }
       </style>
