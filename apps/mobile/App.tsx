@@ -201,7 +201,7 @@ export default function App() {
         <View style={styles.hero}>
           <Text style={styles.eyebrow}>Amsterdam Pools</Text>
           <Text style={styles.title}>Swimming pool finder</Text>
-          <Text style={styles.lede}>Amsterdam pools timetable</Text>
+          <Text style={styles.lede}>Amsterdam pools' timetable</Text>
         </View>
 
         <View style={styles.panel}>
@@ -375,7 +375,6 @@ const styles = StyleSheet.create({
     fontSize: 34,
     fontWeight: "800",
     lineHeight: 36,
-    maxWidth: 260,
   },
   lede: {
     marginTop: 12,

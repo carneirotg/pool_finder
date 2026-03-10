@@ -212,13 +212,14 @@ function renderPage(input: {
           display: flex;
           flex-wrap: wrap;
           gap: 8px;
+          align-items: center;
         }
         .weekday-chip {
           position: relative;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          min-width: 58px;
+          min-width: 64px;
           padding: 10px 14px;
           border-radius: 999px;
           border: 1px solid var(--line);
@@ -284,8 +285,9 @@ function renderPage(input: {
         .empty h2, .empty p { margin: 0; }
         .empty p { margin-top: 8px; color: var(--muted); }
         @media (min-width: 640px) {
-          .query-form { grid-template-columns: 1fr 1fr auto; align-items: end; }
+          .query-form { grid-template-columns: minmax(0, 1.2fr) 1fr auto; align-items: end; }
           .actions { padding-top: 0; }
+          .weekday-row { flex-wrap: nowrap; }
         }
       </style>
     </head>
@@ -298,7 +300,7 @@ function renderPage(input: {
         </section>
 
         <section class="panel">
-          <form class="query-form" method="get" action="/">
+          <form class="query-form" method="get" action="/" id="query-form">
             <label>
               <span>Day</span>
               <div class="weekday-row">
@@ -332,6 +334,16 @@ function renderPage(input: {
           ${cards}
         </section>
       </main>
+      <script>
+        const weekdayInputs = document.querySelectorAll('input[name="weekday"]');
+        const form = document.getElementById('query-form');
+
+        weekdayInputs.forEach((input) => {
+          input.addEventListener('change', () => {
+            form.requestSubmit();
+          });
+        });
+      </script>
     </body>
   </html>`;
 }
