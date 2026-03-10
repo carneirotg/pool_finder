@@ -283,17 +283,22 @@ function renderPage(input: {
         .actions a { background: white; color: var(--accent-strong); border: 1px solid var(--line); }
         .summary {
           margin-top: 16px;
-          padding: 14px 16px;
+          padding: 22px 16px;
           border-radius: 18px;
           display: grid;
           grid-template-columns: 1fr auto;
           gap: 16px;
           align-items: center;
         }
+        .summary > div {
+          display: grid;
+          gap: 10px;
+          align-content: center;
+        }
         .summary p {
           margin: 0;
         }
-        .summary-value { margin: 4px 0 0; font-size: 1.1rem; font-weight: 700; }
+        .summary-value { font-size: 1.1rem; font-weight: 700; }
         .results { display: grid; gap: 14px; margin-top: 18px; }
         .pool-card { border-radius: 20px; padding: 18px 18px 16px; }
         .pool-topline {
