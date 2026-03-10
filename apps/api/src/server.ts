@@ -111,7 +111,15 @@ function renderPage(input: {
   queryTime: string;
   queryWeekday: string;
   count: number;
-  pools: Array<{ name: string; price_eur: number | null; swim_until: string; notes: string; warning: string }>;
+  pools: Array<{
+    name: string;
+    price_eur: number | null;
+    swim_until: string;
+    notes: string;
+    warning: string;
+    source_url: string;
+    last_updated: string;
+  }>;
   error?: string;
 }): string {
   const queryWeekday = input.queryWeekday as Weekday;
@@ -145,17 +153,33 @@ function renderPage(input: {
               ? `<p class="warning">${escapeHtml(pool.warning)}</p>`
               : "";
             const notes = pool.notes ? `<p class="notes">${escapeHtml(pool.notes)}</p>` : "";
+            const detailsRows = [
+              pool.source_url
+                ? `<div class="detail-row"><span class="detail-label">${escapeHtml(t(input.locale, "official_website"))}</span><a class="detail-link" href="${escapeHtml(pool.source_url)}" target="_blank" rel="noreferrer">${escapeHtml(pool.source_url)}</a></div>`
+                : "",
+              pool.last_updated
+                ? `<div class="detail-row"><span class="detail-label">${escapeHtml(t(input.locale, "last_updated"))}</span><span class="detail-value">${escapeHtml(pool.last_updated)}</span></div>`
+                : "",
+            ]
+              .filter(Boolean)
+              .join("");
+            const expanded = detailsRows
+              ? `<div class="pool-details">${detailsRows}</div>`
+              : "";
 
             return `
-              <article class="pool-card">
-                <div class="pool-topline">
-                  <h2>${escapeHtml(pool.name)}</h2>
-                  <span class="price">${escapeHtml(formatPrice(pool.price_eur, input.locale))}</span>
-                </div>
-                <p class="swim-until">${escapeHtml(t(input.locale, "swim_until"))} ${escapeHtml(pool.swim_until)}</p>
-                ${notes}
-                ${warning}
-              </article>
+              <details class="pool-card">
+                <summary class="pool-summary">
+                  <div class="pool-topline">
+                    <h2>${escapeHtml(pool.name)}</h2>
+                    <span class="price">${escapeHtml(formatPrice(pool.price_eur, input.locale))}</span>
+                  </div>
+                  <p class="swim-until">${escapeHtml(t(input.locale, "swim_until"))} ${escapeHtml(pool.swim_until)}</p>
+                  ${notes}
+                  ${warning}
+                </summary>
+                ${expanded}
+              </details>
             `;
           })
           .join("")
@@ -367,7 +391,18 @@ function renderPage(input: {
         }
         .summary-value { font-size: 1.1rem; font-weight: 700; }
         .results { display: grid; gap: 14px; margin-top: 18px; }
-        .pool-card { border-radius: 20px; padding: 18px 18px 16px; }
+        .pool-card { border-radius: 20px; overflow: hidden; }
+        .pool-summary {
+          list-style: none;
+          cursor: pointer;
+          padding: 18px 18px 16px;
+        }
+        .pool-summary::-webkit-details-marker {
+          display: none;
+        }
+        .pool-card[open] .pool-summary {
+          padding-bottom: 14px;
+        }
         .pool-topline {
           display: flex;
           gap: 12px;
@@ -385,6 +420,48 @@ function renderPage(input: {
           background: #f6e4d9;
           color: var(--warning);
           font-weight: 700;
+        }
+        .pool-details {
+          display: grid;
+          gap: 10px;
+          padding: 0 18px;
+          border-top: 1px solid var(--line);
+          background: rgba(255,255,255,0.45);
+          max-height: 0;
+          opacity: 0;
+          overflow: hidden;
+          transition:
+            max-height 220ms ease,
+            opacity 180ms ease,
+            padding 220ms ease;
+        }
+        .pool-card[open] .pool-details {
+          max-height: 220px;
+          opacity: 1;
+          padding: 0 18px 18px;
+        }
+        .detail-row {
+          display: grid;
+          gap: 4px;
+          padding-top: 12px;
+        }
+        .detail-label {
+          font-size: .8rem;
+          font-weight: 700;
+          letter-spacing: .06em;
+          text-transform: uppercase;
+          color: var(--muted);
+        }
+        .detail-link,
+        .detail-value {
+          color: var(--ink);
+          font-size: .98rem;
+          overflow-wrap: anywhere;
+        }
+        .detail-link {
+          color: var(--accent-strong);
+          text-decoration-thickness: 1px;
+          text-underline-offset: 2px;
         }
         .error { margin: 14px 2px 0; color: #9c2e1d; }
         .empty h2, .empty p { margin: 0; }
@@ -498,10 +575,25 @@ function renderPage(input: {
       <script>
         const weekdayInputs = document.querySelectorAll('input[name="weekday"]');
         const form = document.getElementById('query-form');
+        const poolCards = document.querySelectorAll('.pool-card');
 
         weekdayInputs.forEach((input) => {
           input.addEventListener('change', () => {
             form.requestSubmit();
+          });
+        });
+
+        poolCards.forEach((card) => {
+          card.addEventListener('toggle', () => {
+            if (!card.open) {
+              return;
+            }
+
+            poolCards.forEach((otherCard) => {
+              if (otherCard !== card) {
+                otherCard.open = false;
+              }
+            });
           });
         });
       </script>

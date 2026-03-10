@@ -48,6 +48,8 @@ export type OpenPool = {
   note_key: NoteKey | "";
   notes: string;
   warning: string;
+  source_url: string;
+  last_updated: string;
 };
 
 export type OpenPoolsResult = {
@@ -143,6 +145,8 @@ export function findOpenPools(
         note_key: noteKey,
         notes: translateNote(locale, slot.note_key ?? slot.notes),
         warning: pool.warning ?? "",
+        source_url: pool.source_url ?? "",
+        last_updated: pool.last_updated ?? "",
       });
     }
   }

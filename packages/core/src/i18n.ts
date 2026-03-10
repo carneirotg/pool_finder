@@ -37,6 +37,8 @@ type TranslationKey =
   | "query"
   | "matches"
   | "swim_until"
+  | "official_website"
+  | "last_updated"
   | "no_pools_found"
   | "empty_try_another_time"
   | "empty_no_favorite_match"
@@ -59,6 +61,8 @@ const UI_STRINGS: Record<Locale, Record<TranslationKey, string>> = {
     query: "Query",
     matches: "Matches",
     swim_until: "Swim until",
+    official_website: "Official website",
+    last_updated: "Last updated",
     no_pools_found: "No pools found",
     empty_try_another_time: "Try another time or use the Now shortcut.",
     empty_no_favorite_match: "No favorite pools match this moment.",
@@ -80,6 +84,8 @@ const UI_STRINGS: Record<Locale, Record<TranslationKey, string>> = {
     query: "Zoekopdracht",
     matches: "Resultaten",
     swim_until: "Zwemmen tot",
+    official_website: "Officiele website",
+    last_updated: "Laatst bijgewerkt",
     no_pools_found: "Geen zwembaden gevonden",
     empty_try_another_time: "Probeer een ander tijdstip of gebruik Nu.",
     empty_no_favorite_match: "Geen favoriete zwembaden passen op dit moment.",
@@ -232,4 +238,3 @@ export function translateNote(locale: Locale, noteKey: string | undefined): stri
 
   return NOTE_TRANSLATIONS[locale][normalized];
 }
-
