@@ -191,7 +191,7 @@ function renderPage(input: {
         }
         .panel { padding: 16px; border-radius: 20px; }
         .query-form { display: grid; gap: 12px; }
-        .query-row { display: grid; gap: 12px; }
+        .query-row { display: grid; gap: 12px; justify-items: center; }
         .query-form label { display: grid; gap: 6px; }
         .query-form span, .summary-label {
           font-size: .85rem;
@@ -209,11 +209,16 @@ function renderPage(input: {
           font: inherit;
           color: var(--ink);
         }
+        .day-field {
+          width: 100%;
+          justify-items: center;
+        }
         .weekday-row {
           display: flex;
           flex-wrap: wrap;
           gap: 8px;
           align-items: center;
+          justify-content: center;
         }
         .weekday-chip {
           position: relative;
@@ -243,7 +248,27 @@ function renderPage(input: {
         .weekday-chip.selected span {
           color: white;
         }
-        .actions { display: flex; gap: 10px; padding-top: 4px; }
+        .controls-cluster {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+        }
+        .time-field {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .time-field input {
+          width: min(220px, 100%);
+        }
+        .actions {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+        }
         .actions button, .actions a {
           appearance: none;
           border: 0;
@@ -293,11 +318,9 @@ function renderPage(input: {
         .empty h2, .empty p { margin: 0; }
         .empty p { margin-top: 8px; color: var(--muted); }
         @media (min-width: 640px) {
-          .query-row.controls {
-            grid-template-columns: 220px 1fr auto;
-            align-items: end;
+          .controls-cluster {
+            gap: 16px;
           }
-          .actions { padding-top: 0; justify-content: flex-end; }
         }
       </style>
     </head>
@@ -313,20 +336,20 @@ function renderPage(input: {
           <form class="query-form" method="get" action="/" id="query-form">
             <div class="query-row">
               <label class="day-field">
-                <span>Day</span>
                 <div class="weekday-row">
                   ${weekdayButtons}
                 </div>
               </label>
             </div>
             <div class="query-row controls">
-              <label class="time-field">
-                <span>Time</span>
-                <input type="time" name="time" value="${escapeHtml(input.queryTime)}">
-              </label>
-              <div class="actions">
-                <button type="submit">Check pools</button>
-                <a href="/?now=1">Now</a>
+              <div class="controls-cluster">
+                <label class="time-field">
+                  <input type="time" name="time" value="${escapeHtml(input.queryTime)}" aria-label="Time">
+                </label>
+                <div class="actions">
+                  <button type="submit">Check pools</button>
+                  <a href="/?now=1">Now</a>
+                </div>
               </div>
             </div>
           </form>
