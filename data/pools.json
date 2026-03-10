@@ -10,126 +10,126 @@
         "opens_at": "07:00",
         "closes_at": "11:00",
         "swim_until": "11:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "monday",
         "opens_at": "12:00",
         "closes_at": "15:30",
         "swim_until": "15:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "monday",
         "opens_at": "15:30",
         "closes_at": "18:00",
         "swim_until": "18:00",
-        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+        "note_key": "lane_swimming_less_space_lessons"
       },
       {
         "weekday": "tuesday",
         "opens_at": "07:00",
         "closes_at": "13:00",
         "swim_until": "13:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "tuesday",
         "opens_at": "15:30",
         "closes_at": "18:00",
         "swim_until": "18:00",
-        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+        "note_key": "lane_swimming_less_space_lessons"
       },
       {
         "weekday": "tuesday",
         "opens_at": "18:00",
         "closes_at": "22:00",
         "swim_until": "22:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "wednesday",
         "opens_at": "07:00",
         "closes_at": "09:00",
         "swim_until": "09:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "wednesday",
         "opens_at": "12:00",
         "closes_at": "16:00",
         "swim_until": "16:00",
-        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+        "note_key": "lane_swimming_less_space_lessons"
       },
       {
         "weekday": "wednesday",
         "opens_at": "18:45",
         "closes_at": "22:00",
         "swim_until": "22:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "thursday",
         "opens_at": "07:00",
         "closes_at": "15:30",
         "swim_until": "15:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "thursday",
         "opens_at": "15:30",
         "closes_at": "18:00",
         "swim_until": "18:00",
-        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+        "note_key": "lane_swimming_less_space_lessons"
       },
       {
         "weekday": "thursday",
         "opens_at": "19:30",
         "closes_at": "22:00",
         "swim_until": "22:00",
-        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+        "note_key": "lane_swimming_less_space_lessons"
       },
       {
         "weekday": "friday",
         "opens_at": "07:00",
         "closes_at": "15:30",
         "swim_until": "15:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "friday",
         "opens_at": "15:30",
         "closes_at": "18:00",
         "swim_until": "18:00",
-        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+        "note_key": "lane_swimming_less_space_lessons"
       },
       {
         "weekday": "friday",
         "opens_at": "19:30",
         "closes_at": "22:00",
         "swim_until": "22:00",
-        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+        "note_key": "lane_swimming_less_space_lessons"
       },
       {
         "weekday": "saturday",
         "opens_at": "08:00",
         "closes_at": "15:00",
         "swim_until": "15:00",
-        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+        "note_key": "lane_swimming_less_space_lessons"
       },
       {
         "weekday": "sunday",
         "opens_at": "13:00",
         "closes_at": "15:30",
         "swim_until": "15:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "sunday",
         "opens_at": "16:30",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Naaktzwemmen"
+        "note_key": "nude_swimming"
       }
     ]
   },
@@ -144,308 +144,308 @@
         "opens_at": "07:00",
         "closes_at": "10:00",
         "swim_until": "10:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-09",
         "opens_at": "11:00",
         "closes_at": "17:00",
         "swim_until": "17:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-10",
         "opens_at": "07:00",
         "closes_at": "16:30",
         "swim_until": "16:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-10",
         "opens_at": "20:00",
         "closes_at": "22:15",
         "swim_until": "22:15",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-11",
         "opens_at": "07:00",
         "closes_at": "16:00",
         "swim_until": "16:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-11",
         "opens_at": "21:00",
         "closes_at": "22:00",
         "swim_until": "22:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-12",
         "opens_at": "07:00",
         "closes_at": "09:00",
         "swim_until": "09:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-12",
         "opens_at": "10:00",
         "closes_at": "13:00",
         "swim_until": "13:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-12",
         "opens_at": "15:00",
         "closes_at": "15:45",
         "swim_until": "15:45",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-13",
         "opens_at": "07:00",
         "closes_at": "10:00",
         "swim_until": "10:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-13",
         "opens_at": "11:00",
         "closes_at": "14:00",
         "swim_until": "14:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-13",
         "opens_at": "14:45",
         "closes_at": "17:00",
         "swim_until": "17:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-14",
         "opens_at": "11:45",
         "closes_at": "15:00",
         "swim_until": "15:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-15",
         "opens_at": "12:00",
         "closes_at": "17:00",
         "swim_until": "17:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-16",
         "opens_at": "07:00",
         "closes_at": "10:00",
         "swim_until": "10:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-16",
         "opens_at": "11:00",
         "closes_at": "17:00",
         "swim_until": "17:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-17",
         "opens_at": "07:00",
         "closes_at": "16:30",
         "swim_until": "16:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-17",
         "opens_at": "20:00",
         "closes_at": "22:15",
         "swim_until": "22:15",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-18",
         "opens_at": "07:00",
         "closes_at": "16:00",
         "swim_until": "16:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-18",
         "opens_at": "21:00",
         "closes_at": "22:00",
         "swim_until": "22:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-19",
         "opens_at": "07:00",
         "closes_at": "09:00",
         "swim_until": "09:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-19",
         "opens_at": "10:00",
         "closes_at": "13:00",
         "swim_until": "13:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-19",
         "opens_at": "15:00",
         "closes_at": "15:45",
         "swim_until": "15:45",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-20",
         "opens_at": "07:00",
         "closes_at": "10:00",
         "swim_until": "10:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-20",
         "opens_at": "11:00",
         "closes_at": "14:00",
         "swim_until": "14:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-20",
         "opens_at": "14:45",
         "closes_at": "17:00",
         "swim_until": "17:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-21",
         "opens_at": "11:45",
         "closes_at": "15:45",
         "swim_until": "15:45",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-22",
         "opens_at": "12:00",
         "closes_at": "17:00",
         "swim_until": "17:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-23",
         "opens_at": "07:00",
         "closes_at": "10:00",
         "swim_until": "10:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-23",
         "opens_at": "11:00",
         "closes_at": "17:00",
         "swim_until": "17:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-24",
         "opens_at": "07:00",
         "closes_at": "16:30",
         "swim_until": "16:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-24",
         "opens_at": "20:00",
         "closes_at": "22:15",
         "swim_until": "22:15",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-25",
         "opens_at": "07:00",
         "closes_at": "16:00",
         "swim_until": "16:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-25",
         "opens_at": "21:00",
         "closes_at": "22:00",
         "swim_until": "22:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-26",
         "opens_at": "07:00",
         "closes_at": "09:00",
         "swim_until": "09:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-26",
         "opens_at": "10:00",
         "closes_at": "13:00",
         "swim_until": "13:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-26",
         "opens_at": "15:00",
         "closes_at": "15:45",
         "swim_until": "15:45",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-27",
         "opens_at": "07:00",
         "closes_at": "10:00",
         "swim_until": "10:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-27",
         "opens_at": "11:00",
         "closes_at": "14:00",
         "swim_until": "14:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-27",
         "opens_at": "14:45",
         "closes_at": "17:00",
         "swim_until": "17:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-28",
         "opens_at": "11:45",
         "closes_at": "15:45",
         "swim_until": "15:45",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-29",
         "opens_at": "12:00",
         "closes_at": "17:00",
         "swim_until": "17:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-30",
         "opens_at": "07:00",
         "closes_at": "10:00",
         "swim_until": "10:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "date": "2026-03-30",
         "opens_at": "11:00",
         "closes_at": "17:00",
         "swim_until": "17:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       }
     ]
   },
@@ -460,105 +460,105 @@
         "opens_at": "06:00",
         "closes_at": "07:00",
         "swim_until": "07:00",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "monday",
         "opens_at": "09:15",
         "closes_at": "12:00",
         "swim_until": "12:00",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "tuesday",
         "opens_at": "06:00",
         "closes_at": "07:00",
         "swim_until": "07:00",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "tuesday",
         "opens_at": "09:15",
         "closes_at": "12:00",
         "swim_until": "12:00",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "tuesday",
         "opens_at": "19:30",
         "closes_at": "20:30",
         "swim_until": "20:30",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "wednesday",
         "opens_at": "06:00",
         "closes_at": "07:00",
         "swim_until": "07:00",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "wednesday",
         "opens_at": "09:15",
         "closes_at": "12:00",
         "swim_until": "12:00",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "wednesday",
         "opens_at": "19:00",
         "closes_at": "20:00",
         "swim_until": "20:00",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "thursday",
         "opens_at": "06:00",
         "closes_at": "07:00",
         "swim_until": "07:00",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "thursday",
         "opens_at": "09:15",
         "closes_at": "12:00",
         "swim_until": "12:00",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "thursday",
         "opens_at": "19:30",
         "closes_at": "20:30",
         "swim_until": "20:30",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "friday",
         "opens_at": "06:00",
         "closes_at": "07:00",
         "swim_until": "07:00",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "friday",
         "opens_at": "09:15",
         "closes_at": "12:00",
         "swim_until": "12:00",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "saturday",
         "opens_at": "09:15",
         "closes_at": "11:15",
         "swim_until": "11:15",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "sunday",
         "opens_at": "08:00",
         "closes_at": "11:00",
         "swim_until": "11:00",
-        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+        "note_key": "lane_swimming"
       }
     ]
   },
@@ -573,84 +573,84 @@
         "opens_at": "12:00",
         "closes_at": "13:00",
         "swim_until": "13:00",
-        "notes": "Banenzwemmen sportief & ontspannen"
+        "note_key": "lane_swimming_sport_and_relaxation"
       },
       {
         "weekday": "monday",
         "opens_at": "19:00",
         "closes_at": "21:00",
         "swim_until": "21:00",
-        "notes": "Banenzwemmen sportief & ontspannen"
+        "note_key": "lane_swimming_sport_and_relaxation"
       },
       {
         "weekday": "tuesday",
         "opens_at": "07:00",
         "closes_at": "11:00",
         "swim_until": "11:00",
-        "notes": "Banenzwemmen sportief & ontspannen"
+        "note_key": "lane_swimming_sport_and_relaxation"
       },
       {
         "weekday": "tuesday",
         "opens_at": "12:00",
         "closes_at": "14:00",
         "swim_until": "14:00",
-        "notes": "Banenzwemmen sportief & ontspannen"
+        "note_key": "lane_swimming_sport_and_relaxation"
       },
       {
         "weekday": "wednesday",
         "opens_at": "12:00",
         "closes_at": "13:00",
         "swim_until": "13:00",
-        "notes": "Banenzwemmen sportief & ontspannen"
+        "note_key": "lane_swimming_sport_and_relaxation"
       },
       {
         "weekday": "wednesday",
         "opens_at": "19:00",
         "closes_at": "21:00",
         "swim_until": "21:00",
-        "notes": "Banenzwemmen sportief & ontspannen"
+        "note_key": "lane_swimming_sport_and_relaxation"
       },
       {
         "weekday": "thursday",
         "opens_at": "07:00",
         "closes_at": "11:00",
         "swim_until": "11:00",
-        "notes": "Banenzwemmen sportief & ontspannen"
+        "note_key": "lane_swimming_sport_and_relaxation"
       },
       {
         "weekday": "thursday",
         "opens_at": "12:00",
         "closes_at": "14:00",
         "swim_until": "14:00",
-        "notes": "Banenzwemmen sportief & ontspannen"
+        "note_key": "lane_swimming_sport_and_relaxation"
       },
       {
         "weekday": "thursday",
         "opens_at": "19:00",
         "closes_at": "21:00",
         "swim_until": "21:00",
-        "notes": "Banenzwemmen sportief & ontspannen"
+        "note_key": "lane_swimming_sport_and_relaxation"
       },
       {
         "weekday": "friday",
         "opens_at": "09:00",
         "closes_at": "13:00",
         "swim_until": "13:00",
-        "notes": "Banenzwemmen sportief & ontspannen"
+        "note_key": "lane_swimming_sport_and_relaxation"
       },
       {
         "weekday": "saturday",
         "opens_at": "12:00",
         "closes_at": "13:00",
         "swim_until": "13:00",
-        "notes": "Banenzwemmen sportief & ontspannen"
+        "note_key": "lane_swimming_sport_and_relaxation"
       },
       {
         "weekday": "sunday",
         "opens_at": "09:00",
         "closes_at": "11:00",
         "swim_until": "11:00",
-        "notes": "Banenzwemmen sportief & ontspannen"
+        "note_key": "lane_swimming_sport_and_relaxation"
       }
     ]
   },
@@ -665,49 +665,49 @@
         "opens_at": "10:00",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "tuesday",
         "opens_at": "10:00",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "wednesday",
         "opens_at": "10:00",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "thursday",
         "opens_at": "10:00",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "friday",
         "opens_at": "10:00",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "saturday",
         "opens_at": "10:00",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "sunday",
         "opens_at": "10:00",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       }
     ]
   },
@@ -722,77 +722,77 @@
         "opens_at": "10:00",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "tuesday",
         "opens_at": "07:00",
         "closes_at": "10:00",
         "swim_until": "10:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "tuesday",
         "opens_at": "10:00",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "tuesday",
         "opens_at": "18:00",
         "closes_at": "20:00",
         "swim_until": "20:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "wednesday",
         "opens_at": "10:00",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "thursday",
         "opens_at": "07:00",
         "closes_at": "10:00",
         "swim_until": "10:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "thursday",
         "opens_at": "10:00",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "thursday",
         "opens_at": "18:00",
         "closes_at": "20:00",
         "swim_until": "20:00",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "friday",
         "opens_at": "10:00",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "saturday",
         "opens_at": "10:00",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       },
       {
         "weekday": "sunday",
         "opens_at": "10:00",
         "closes_at": "17:30",
         "swim_until": "17:30",
-        "notes": "Banenzwemmen"
+        "note_key": "lane_swimming"
       }
     ]
   },
@@ -807,84 +807,84 @@
         "opens_at": "07:00",
         "closes_at": "09:00",
         "swim_until": "09:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "monday",
         "opens_at": "11:00",
         "closes_at": "13:30",
         "swim_until": "13:30",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "monday",
         "opens_at": "13:30",
         "closes_at": "20:00",
         "swim_until": "20:00",
-        "notes": "Banenzwemmen - 3 banen beschikbaar"
+        "note_key": "lane_swimming_3_lanes_available"
       },
       {
         "weekday": "monday",
         "opens_at": "21:00",
         "closes_at": "22:00",
         "swim_until": "22:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "tuesday",
         "opens_at": "07:00",
         "closes_at": "19:00",
         "swim_until": "19:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "wednesday",
         "opens_at": "07:00",
         "closes_at": "13:00",
         "swim_until": "13:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "thursday",
         "opens_at": "07:00",
         "closes_at": "09:00",
         "swim_until": "09:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "thursday",
         "opens_at": "12:00",
         "closes_at": "15:00",
         "swim_until": "15:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "friday",
         "opens_at": "07:00",
         "closes_at": "09:00",
         "swim_until": "09:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "friday",
         "opens_at": "12:00",
         "closes_at": "15:00",
         "swim_until": "15:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "friday",
         "opens_at": "19:00",
         "closes_at": "22:00",
         "swim_until": "22:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "sunday",
         "opens_at": "12:45",
         "closes_at": "14:30",
         "swim_until": "14:30",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       }
     ]
   },
@@ -899,70 +899,70 @@
         "opens_at": "07:00",
         "closes_at": "14:00",
         "swim_until": "14:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "monday",
         "opens_at": "21:00",
         "closes_at": "22:00",
         "swim_until": "22:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "tuesday",
         "opens_at": "07:00",
         "closes_at": "14:00",
         "swim_until": "14:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "tuesday",
         "opens_at": "20:00",
         "closes_at": "22:00",
         "swim_until": "22:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "wednesday",
         "opens_at": "07:00",
         "closes_at": "14:00",
         "swim_until": "14:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "wednesday",
         "opens_at": "21:00",
         "closes_at": "22:00",
         "swim_until": "22:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "thursday",
         "opens_at": "08:00",
         "closes_at": "14:00",
         "swim_until": "14:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "friday",
         "opens_at": "07:00",
         "closes_at": "14:00",
         "swim_until": "14:00",
-        "notes": "Banenzwemmen - 25-meterbad binnen"
+        "note_key": "lane_swimming_25m_indoor_pool"
       },
       {
         "weekday": "sunday",
         "opens_at": "10:30",
         "closes_at": "12:00",
         "swim_until": "12:00",
-        "notes": "Banenzwemmen - Sportbad"
+        "note_key": "lane_swimming_sports_pool"
       },
       {
         "weekday": "sunday",
         "opens_at": "10:30",
         "closes_at": "14:00",
         "swim_until": "14:00",
-        "notes": "Banenzwemmen - Verenigingsbad"
+        "note_key": "lane_swimming_club_pool"
       }
     ]
   }

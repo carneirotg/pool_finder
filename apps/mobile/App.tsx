@@ -6,6 +6,7 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
+  Image,
   Platform,
   Pressable,
   SafeAreaView,
@@ -14,18 +15,16 @@ import {
   Text,
   View,
 } from "react-native";
-
-const WEEKDAYS = [
-  "monday",
-  "tuesday",
-  "wednesday",
-  "thursday",
-  "friday",
-  "saturday",
-  "sunday",
-] as const;
-
-type Weekday = (typeof WEEKDAYS)[number];
+import {
+  type Locale,
+  type Weekday,
+  WEEKDAYS,
+  formatPrice,
+  resolveLocale,
+  t,
+  weekdayLabel,
+  weekdayShortLabel,
+} from "../../packages/core/src/i18n";
 
 type PoolResult = {
   name: string;
@@ -45,20 +44,26 @@ type OpenPoolsResult = {
 type QueryInput = {
   weekday?: Weekday;
   time?: string;
+  locale?: Locale;
   minLoadingMs?: number;
 };
 
 const PUBLIC_API_BASE_URL =
   process.env.EXPO_PUBLIC_API_BASE_URL ?? "https://pool-finder.onrender.com";
 const FAVORITE_POOLS_STORAGE_KEY = "favorite_pools";
-
-function titleWeekday(value: string): string {
-  return value.charAt(0).toUpperCase() + value.slice(1);
-}
+const LOCALE_STORAGE_KEY = "app_locale";
+const FLAG_IMAGES = {
+  en: require("../../assets/flags/us-circle.png"),
+  nl: require("../../assets/flags/nl-circle.png"),
+} as const;
 
 function weekdayFromDate(value: string): Weekday {
   const date = new Date(`${value}T00:00:00`);
   return WEEKDAYS[(date.getDay() + 6) % 7];
+}
+
+function deviceLocale(): Locale {
+  return resolveLocale(Intl.DateTimeFormat().resolvedOptions().locale);
 }
 
 function currentWeekday(): Weekday {
@@ -69,13 +74,6 @@ function currentWeekday(): Weekday {
 function currentTime(): string {
   const now = new Date();
   return `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
-}
-
-function formatPrice(priceEur: number | null): string {
-  if (priceEur == null) {
-    return "n/a";
-  }
-  return `EUR ${priceEur.toFixed(2)}`;
 }
 
 function timeToDate(value: string): Date {
@@ -92,6 +90,7 @@ function delay(ms: number): Promise<void> {
 }
 
 export default function App() {
+  const [locale, setLocale] = useState<Locale>(deviceLocale());
   const [weekday, setWeekday] = useState<Weekday>(currentWeekday());
   const [time, setTime] = useState(currentTime());
   const [showTimePicker, setShowTimePicker] = useState(false);
@@ -109,10 +108,13 @@ export default function App() {
     try {
       const nextWeekday = overrides.weekday ?? weekday;
       const nextTime = overrides.time ?? time;
+      const nextLocale = overrides.locale ?? locale;
       const minLoadingMs = overrides.minLoadingMs ?? 0;
       const trimmedBaseUrl = PUBLIC_API_BASE_URL.trim().replace(/\/$/, "");
       const [response] = await Promise.all([
-        fetch(`${trimmedBaseUrl}/api/open?weekday=${nextWeekday}&time=${encodeURIComponent(nextTime)}`),
+        fetch(
+          `${trimmedBaseUrl}/api/open?locale=${nextLocale}&weekday=${nextWeekday}&time=${encodeURIComponent(nextTime)}`,
+        ),
         delay(minLoadingMs),
       ]);
 
@@ -124,7 +126,9 @@ export default function App() {
       setResult(data);
     } catch (fetchError) {
       const message =
-        fetchError instanceof Error ? fetchError.message : "Could not load pool data.";
+        fetchError instanceof Error
+          ? fetchError.message
+          : t(overrides.locale ?? locale, "could_not_load_pool_data");
       setError(message);
     } finally {
       setLoading(false);
@@ -135,11 +139,14 @@ export default function App() {
     async function initialize() {
       try {
         const savedFavorites = await AsyncStorage.getItem(FAVORITE_POOLS_STORAGE_KEY);
+        const savedLocale = await AsyncStorage.getItem(LOCALE_STORAGE_KEY);
 
         if (savedFavorites) {
           setFavoritePools(JSON.parse(savedFavorites) as string[]);
         }
-        await fetchPools();
+        const nextLocale = savedLocale ? resolveLocale(savedLocale) : deviceLocale();
+        setLocale(nextLocale);
+        await fetchPools({ locale: nextLocale });
       } finally {
         setInitializing(false);
       }
@@ -155,6 +162,12 @@ export default function App() {
 
     setFavoritePools(nextFavorites);
     await AsyncStorage.setItem(FAVORITE_POOLS_STORAGE_KEY, JSON.stringify(nextFavorites));
+  }
+
+  async function handleLocaleSelect(nextLocale: Locale) {
+    setLocale(nextLocale);
+    await AsyncStorage.setItem(LOCALE_STORAGE_KEY, nextLocale);
+    void fetchPools({ locale: nextLocale, minLoadingMs: 250 });
   }
 
   function handleWeekdaySelect(nextWeekday: Weekday) {
@@ -199,13 +212,34 @@ export default function App() {
       <StatusBar style="dark" />
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.hero}>
-          <Text style={styles.eyebrow}>Amsterdam Pools</Text>
-          <Text style={styles.title}>Swimming pool finder</Text>
-          <Text style={styles.lede}>Amsterdam pools' timetable</Text>
+          <View style={styles.heroTopline}>
+            <Text style={styles.eyebrow}>{t(locale, "app_eyebrow")}</Text>
+            <View style={styles.localeSwitcher}>
+              {(["en", "nl"] as const).map((value) => {
+                const selected = value === locale;
+                return (
+                  <Pressable
+                    key={value}
+                    onPress={() => void handleLocaleSelect(value)}
+                    style={({ pressed }) => [
+                      styles.localeButton,
+                      selected && styles.localeButtonSelected,
+                      pressed && styles.linkPressed,
+                    ]}
+                  >
+                    <Image source={FLAG_IMAGES[value]} style={styles.localeButtonImage} />
+                    <Text style={styles.localeButtonLabel}>{value === "en" ? "EN" : "NL"}</Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </View>
+          <Text style={styles.title}>{t(locale, "app_title")}</Text>
+          <Text style={styles.lede}>{t(locale, "app_subtitle")}</Text>
         </View>
 
         <View style={styles.panel}>
-          <Text style={styles.label}>Day</Text>
+          <Text style={styles.label}>{t(locale, "day")}</Text>
           <View style={styles.weekdayRow}>
             {WEEKDAYS.map((day) => {
               const selected = day === weekday;
@@ -220,14 +254,14 @@ export default function App() {
                   ]}
                 >
                   <Text style={[styles.dayChipText, selected && styles.dayChipTextSelected]}>
-                    {titleWeekday(day).slice(0, 3)}
+                    {weekdayShortLabel(locale, day)}
                   </Text>
                 </Pressable>
               );
             })}
           </View>
 
-          <Text style={styles.label}>Time</Text>
+          <Text style={styles.label}>{t(locale, "time")}</Text>
           <Pressable
             onPress={() => setShowTimePicker(true)}
             style={({ pressed }) => [styles.inputButton, pressed && styles.controlPressed]}
@@ -259,7 +293,7 @@ export default function App() {
               {loading ? (
                 <ActivityIndicator color="#ffffff" />
               ) : (
-                <Text style={styles.primaryButtonText}>Check pools</Text>
+                <Text style={styles.primaryButtonText}>{t(locale, "check_pools")}</Text>
               )}
             </Pressable>
             <Pressable
@@ -278,7 +312,9 @@ export default function App() {
                 pressed && !(loading || initializing) && styles.buttonPressed,
               ]}
             >
-              <Text style={styles.secondaryButtonText}>{loading ? "Loading..." : "Now"}</Text>
+              <Text style={styles.secondaryButtonText}>
+                {loading ? t(locale, "loading") : t(locale, "now")}
+              </Text>
             </Pressable>
           </View>
           <Pressable
@@ -286,7 +322,7 @@ export default function App() {
             style={({ pressed }) => [styles.tertiaryButton, pressed && styles.linkPressed]}
           >
             <Text style={styles.tertiaryButtonText}>
-              {onlyFavorites ? "Show all pools" : "Only favorites"}
+              {onlyFavorites ? t(locale, "show_all_pools") : t(locale, "only_favorites")}
             </Text>
           </Pressable>
         </View>
@@ -296,14 +332,14 @@ export default function App() {
         {result ? (
           <View style={styles.summary}>
             <View>
-              <Text style={styles.summaryLabel}>Query</Text>
+              <Text style={styles.summaryLabel}>{t(locale, "query")}</Text>
               <Text style={styles.summaryValue}>
-                {titleWeekday(weekdayFromDate(result.query_date))}, {result.query_date} at{" "}
-                {result.query_time}
+                {weekdayLabel(locale, weekdayFromDate(result.query_date))}, {result.query_date}{" "}
+                {locale === "nl" ? "om" : "at"} {result.query_time}
               </Text>
             </View>
             <View>
-              <Text style={styles.summaryLabel}>Matches</Text>
+              <Text style={styles.summaryLabel}>{t(locale, "matches")}</Text>
               <Text style={styles.summaryValue}>{result.count}</Text>
             </View>
           </View>
@@ -324,9 +360,11 @@ export default function App() {
                     </Text>
                   </Pressable>
                 </View>
-                <Text style={styles.cardPrice}>{formatPrice(pool.price_eur)}</Text>
+                <Text style={styles.cardPrice}>{formatPrice(pool.price_eur, locale)}</Text>
               </View>
-              <Text style={styles.cardTime}>Swim until {pool.swim_until}</Text>
+              <Text style={styles.cardTime}>
+                {t(locale, "swim_until")} {pool.swim_until}
+              </Text>
               {pool.notes ? <Text style={styles.cardNotes}>{pool.notes}</Text> : null}
               {pool.warning ? <Text style={styles.cardWarning}>{pool.warning}</Text> : null}
             </View>
@@ -334,11 +372,11 @@ export default function App() {
 
           {result && displayedPools.length === 0 && !loading ? (
             <View style={styles.card}>
-              <Text style={styles.cardTitle}>No pools found</Text>
+              <Text style={styles.cardTitle}>{t(locale, "no_pools_found")}</Text>
               <Text style={styles.cardNotes}>
                 {onlyFavorites
-                  ? "No favorite pools match this moment."
-                  : "Try another time or switch to a different day."}
+                  ? t(locale, "empty_no_favorite_match")
+                  : t(locale, "empty_try_other_day")}
               </Text>
             </View>
           ) : null}
@@ -362,6 +400,12 @@ const styles = StyleSheet.create({
   hero: {
     paddingVertical: 8,
   },
+  heroTopline: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    gap: 12,
+  },
   eyebrow: {
     color: "#0a5ed7",
     fontSize: 12,
@@ -369,6 +413,39 @@ const styles = StyleSheet.create({
     letterSpacing: 1.5,
     textTransform: "uppercase",
     marginBottom: 8,
+  },
+  localeSwitcher: {
+    flexDirection: "row",
+    gap: 8,
+  },
+  localeButton: {
+    minWidth: 68,
+    height: 38,
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: "#d8d0c4",
+    backgroundColor: "rgba(255,255,255,0.7)",
+    paddingLeft: 3,
+    paddingRight: 10,
+    flexDirection: "row",
+    gap: 8,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  localeButtonSelected: {
+    borderColor: "#0a5ed7",
+    backgroundColor: "#ffffff",
+  },
+  localeButtonImage: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+  },
+  localeButtonLabel: {
+    color: "#182126",
+    fontSize: 12,
+    fontWeight: "800",
+    letterSpacing: 0.5,
   },
   title: {
     color: "#182126",

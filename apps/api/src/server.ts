@@ -1,16 +1,25 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+
 import Fastify from "fastify";
 
 import {
   WEEKDAYS,
   formatPrice,
+  isLocale,
   queryOpenPools,
-  titleWeekday,
+  resolveLocale,
+  t,
   validateDate,
   validateTime,
+  weekdayForDate,
+  weekdayLabel,
+  weekdayShortLabel,
 } from "../../../packages/core/src/index";
 
 const app = Fastify({ logger: true });
 type Weekday = (typeof WEEKDAYS)[number];
+const FLAG_ASSET_DIR = path.join(process.cwd(), "assets", "flags");
 
 function pad(value: number): string {
   return String(value).padStart(2, "0");
@@ -97,6 +106,7 @@ function escapeHtml(value: string): string {
 }
 
 function renderPage(input: {
+  locale: "en" | "nl";
   queryDate: string;
   queryTime: string;
   queryWeekday: string;
@@ -104,15 +114,28 @@ function renderPage(input: {
   pools: Array<{ name: string; price_eur: number | null; swim_until: string; notes: string; warning: string }>;
   error?: string;
 }): string {
+  const queryWeekday = input.queryWeekday as Weekday;
   const weekdayButtons = WEEKDAYS.map((weekday) => {
     const selected = weekday === input.queryWeekday ? " selected" : "";
     return `
       <label class="weekday-chip${selected}">
         <input type="radio" name="weekday" value="${weekday}"${selected ? " checked" : ""}>
-        <span>${titleWeekday(weekday).slice(0, 3)}</span>
+        <span>${weekdayShortLabel(input.locale, weekday)}</span>
       </label>
     `;
   }).join("");
+
+  const localeLinks = (["en", "nl"] as const)
+    .map((locale) => {
+      const selected = locale === input.locale ? " selected" : "";
+      return `
+        <a class="locale-chip${selected}" href="/?locale=${locale}&weekday=${escapeHtml(queryWeekday)}&time=${escapeHtml(input.queryTime)}" aria-label="${locale === "en" ? "Switch to English" : "Overschakelen naar Nederlands"}">
+          <img src="/assets/flags/${locale === "en" ? "us-circle.svg" : "nl-circle.svg"}" alt="${locale === "en" ? "English" : "Nederlands"}">
+          <span>${locale === "en" ? "EN" : "NL"}</span>
+        </a>
+      `;
+    })
+    .join("");
 
   const cards =
     input.pools.length > 0
@@ -127,9 +150,9 @@ function renderPage(input: {
               <article class="pool-card">
                 <div class="pool-topline">
                   <h2>${escapeHtml(pool.name)}</h2>
-                  <span class="price">${escapeHtml(formatPrice(pool.price_eur))}</span>
+                  <span class="price">${escapeHtml(formatPrice(pool.price_eur, input.locale))}</span>
                 </div>
-                <p class="swim-until">Swim until ${escapeHtml(pool.swim_until)}</p>
+                <p class="swim-until">${escapeHtml(t(input.locale, "swim_until"))} ${escapeHtml(pool.swim_until)}</p>
                 ${notes}
                 ${warning}
               </article>
@@ -138,19 +161,19 @@ function renderPage(input: {
           .join("")
       : `
           <article class="pool-card empty">
-            <h2>No pools found</h2>
-            <p>Try another time or use the Now shortcut.</p>
+            <h2>${escapeHtml(t(input.locale, "no_pools_found"))}</h2>
+            <p>${escapeHtml(t(input.locale, "empty_try_another_time"))}</p>
           </article>
         `;
 
   const error = input.error ? `<p class="error">${escapeHtml(input.error)}</p>` : "";
 
   return `<!doctype html>
-  <html lang="en">
+  <html lang="${input.locale}">
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Amsterdam Pools</title>
+      <title>${escapeHtml(t(input.locale, "app_eyebrow"))}</title>
       <style>
         :root {
           --bg: #f4efe6;
@@ -174,6 +197,12 @@ function renderPage(input: {
         }
         .shell { width: min(720px, calc(100% - 24px)); margin: 0 auto; padding: 24px 0 48px; }
         .hero { padding: 8px 4px 18px; }
+        .hero-top {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 16px;
+        }
         .eyebrow {
           margin: 0 0 8px;
           font-size: .9rem;
@@ -181,6 +210,42 @@ function renderPage(input: {
           letter-spacing: .08em;
           text-transform: uppercase;
           color: var(--accent-strong);
+        }
+        .locale-switcher {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .locale-chip {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          min-width: 68px;
+          height: 42px;
+          padding: 0 10px 0 4px;
+          border-radius: 999px;
+          border: 1px solid var(--line);
+          background: rgba(255,255,255,0.7);
+          text-decoration: none;
+          color: var(--ink);
+        }
+        .locale-chip img {
+          width: 32px;
+          height: 32px;
+          display: block;
+          border-radius: 999px;
+          flex: 0 0 auto;
+        }
+        .locale-chip span {
+          font-size: .85rem;
+          font-weight: 800;
+          letter-spacing: .04em;
+        }
+        .locale-chip.selected {
+          border-color: var(--accent-strong);
+          box-shadow: inset 0 0 0 2px var(--accent-strong);
+          background: white;
         }
         .hero h1 { margin: 0; font-size: clamp(2.2rem, 6vw, 4rem); line-height: .95; }
         .lede { margin: 14px 0 0; color: var(--muted); font-size: 1.05rem; }
@@ -327,6 +392,10 @@ function renderPage(input: {
           .summary {
             grid-template-columns: 1fr;
           }
+          .hero-top {
+            flex-direction: column;
+            align-items: flex-start;
+          }
         }
         @media (min-width: 390px) {
           .controls-cluster {
@@ -375,13 +444,19 @@ function renderPage(input: {
     <body>
       <main class="shell">
         <section class="hero">
-          <p class="eyebrow">Amsterdam Pools</p>
-          <h1>Swimming pool finder</h1>
-          <p class="lede">Amsterdam pools timetable</p>
+          <div class="hero-top">
+            <p class="eyebrow">${escapeHtml(t(input.locale, "app_eyebrow"))}</p>
+            <div class="locale-switcher">
+              ${localeLinks}
+            </div>
+          </div>
+          <h1>${escapeHtml(t(input.locale, "app_title"))}</h1>
+          <p class="lede">${escapeHtml(t(input.locale, "app_subtitle"))}</p>
         </section>
 
         <section class="panel">
           <form class="query-form" method="get" action="/" id="query-form">
+            <input type="hidden" name="locale" value="${escapeHtml(input.locale)}">
             <div class="query-row">
               <label class="day-field">
                 <div class="weekday-row">
@@ -392,11 +467,11 @@ function renderPage(input: {
             <div class="query-row controls">
               <div class="controls-cluster">
                 <label class="time-field">
-                  <input type="time" name="time" value="${escapeHtml(input.queryTime)}" aria-label="Time">
+                  <input type="time" name="time" value="${escapeHtml(input.queryTime)}" aria-label="${escapeHtml(t(input.locale, "time"))}">
                 </label>
                 <div class="actions">
-                  <button type="submit">Check pools</button>
-                  <a href="/?now=1">Now</a>
+                  <button type="submit">${escapeHtml(t(input.locale, "check_pools"))}</button>
+                  <a href="/?now=1&locale=${escapeHtml(input.locale)}">${escapeHtml(t(input.locale, "now"))}</a>
                 </div>
               </div>
             </div>
@@ -406,11 +481,11 @@ function renderPage(input: {
 
         <section class="summary">
           <div>
-            <p class="summary-label">Query</p>
-            <p class="summary-value">${escapeHtml(titleWeekday(input.queryWeekday))}, ${escapeHtml(input.queryDate)} at ${escapeHtml(input.queryTime)}</p>
+            <p class="summary-label">${escapeHtml(t(input.locale, "query"))}</p>
+            <p class="summary-value">${escapeHtml(weekdayLabel(input.locale, queryWeekday))}, ${escapeHtml(input.queryDate)} ${input.locale === "nl" ? "om" : "at"} ${escapeHtml(input.queryTime)}</p>
           </div>
           <div>
-            <p class="summary-label">Matches</p>
+            <p class="summary-label">${escapeHtml(t(input.locale, "matches"))}</p>
             <p class="summary-value">${input.count}</p>
           </div>
         </section>
@@ -436,15 +511,19 @@ function renderPage(input: {
 app.get("/", async (request, reply) => {
   try {
     const query = request.query as Record<string, string | undefined>;
+    const locale = isLocale(query.locale)
+      ? query.locale
+      : resolveLocale(request.headers["accept-language"]);
     const { date, time, weekday } = resolveInputs(
       query.date,
       query.weekday,
       query.time,
       query.now === "1",
     );
-    const result = await queryOpenPools(date, time);
+    const result = await queryOpenPools(date, time, locale);
     return reply.type("text/html").send(
       renderPage({
+        locale,
         queryDate: result.query_date,
         queryTime: result.query_time,
         queryWeekday: weekday,
@@ -454,8 +533,10 @@ app.get("/", async (request, reply) => {
     );
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown error";
+    const locale = resolveLocale(request.headers["accept-language"]);
     return reply.status(400).type("text/html").send(
       renderPage({
+        locale,
         queryDate: "",
         queryTime: "",
         queryWeekday: "monday",
@@ -467,10 +548,25 @@ app.get("/", async (request, reply) => {
   }
 });
 
+app.get("/assets/flags/:name", async (request, reply) => {
+  const params = request.params as { name: string };
+  if (!/^[a-z-]+\.(svg|png)$/.test(params.name)) {
+    return reply.status(404).send("Not found");
+  }
+
+  const filePath = path.join(FLAG_ASSET_DIR, params.name);
+  const content = await readFile(filePath);
+  const contentType = params.name.endsWith(".svg") ? "image/svg+xml" : "image/png";
+  return reply.type(contentType).send(content);
+});
+
 app.get("/api/open", async (request) => {
   const query = request.query as Record<string, string | undefined>;
+  const locale = isLocale(query.locale)
+    ? query.locale
+    : resolveLocale(request.headers["accept-language"]);
   const { date, time } = resolveInputs(query.date, query.weekday, query.time, query.now === "1");
-  return queryOpenPools(date, time);
+  return queryOpenPools(date, time, locale);
 });
 
 const port = Number(process.env.PORT ?? "3000");

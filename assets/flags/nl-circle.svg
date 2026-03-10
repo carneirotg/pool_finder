@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title>Netherlands flag</title>
+  <defs>
+    <clipPath id="circle">
+      <circle cx="48" cy="48" r="44" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#circle)">
+    <rect width="96" height="32" y="0" fill="#AE1C28" />
+    <rect width="96" height="32" y="32" fill="#FFFFFF" />
+    <rect width="96" height="32" y="64" fill="#21468B" />
+  </g>
+  <circle cx="48" cy="48" r="44" fill="none" stroke="rgba(24,33,38,0.08)" stroke-width="2" />
+</svg>

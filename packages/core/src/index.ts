@@ -1,17 +1,26 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-export const WEEKDAYS = [
-  "monday",
-  "tuesday",
-  "wednesday",
-  "thursday",
-  "friday",
-  "saturday",
-  "sunday",
-] as const;
+import {
+  type Locale,
+  type NoteKey,
+  type Weekday,
+  WEEKDAYS,
+  formatPrice,
+  translateNote,
+  weekdayLabel,
+  weekdayShortLabel,
+} from "./i18n";
 
-export type Weekday = (typeof WEEKDAYS)[number];
+export { WEEKDAYS, formatPrice, weekdayLabel, weekdayShortLabel };
+export type { Locale, NoteKey, Weekday };
+export {
+  isLocale,
+  normalizeNoteKey,
+  resolveLocale,
+  t,
+  translateNote,
+} from "./i18n";
 
 export type AvailabilitySlot = {
   date?: string;
@@ -19,6 +28,7 @@ export type AvailabilitySlot = {
   opens_at: string;
   closes_at: string;
   swim_until?: string;
+  note_key?: NoteKey;
   notes?: string;
 };
 
@@ -35,6 +45,7 @@ export type OpenPool = {
   name: string;
   price_eur: number | null;
   swim_until: string;
+  note_key: NoteKey | "";
   notes: string;
   warning: string;
 };
@@ -74,21 +85,9 @@ export function validateTime(value: string): string {
   return value;
 }
 
-export function weekdayForDate(value: string): string {
+export function weekdayForDate(value: string): Weekday {
   const date = new Date(`${value}T00:00:00`);
-  return date.toLocaleDateString("en-US", { weekday: "long" }).toLowerCase();
-}
-
-export function titleWeekday(value: string): string {
-  return value.charAt(0).toUpperCase() + value.slice(1);
-}
-
-export function formatPrice(priceEur: number | null | undefined): string {
-  if (priceEur == null) {
-    return "n/a";
-  }
-
-  return `EUR ${priceEur.toFixed(2)}`;
+  return WEEKDAYS[(date.getDay() + 6) % 7];
 }
 
 export async function loadPools(dataFile = DEFAULT_DATA_FILE): Promise<PoolRecord[]> {
@@ -126,6 +125,7 @@ export function findOpenPools(
   pools: PoolRecord[],
   queryDate: string,
   queryTime: string,
+  locale: Locale = "en",
 ): OpenPool[] {
   const matches: OpenPool[] = [];
 
@@ -135,11 +135,13 @@ export function findOpenPools(
         continue;
       }
 
+      const noteKey = slot.note_key ?? "";
       matches.push({
         name: pool.name ?? "Unknown",
         price_eur: pool.price_eur ?? null,
         swim_until: slot.swim_until ?? slot.closes_at,
-        notes: slot.notes ?? "",
+        note_key: noteKey,
+        notes: translateNote(locale, slot.note_key ?? slot.notes),
         warning: pool.warning ?? "",
       });
     }
@@ -159,13 +161,14 @@ export function findOpenPools(
 export async function queryOpenPools(
   queryDate: string,
   queryTime: string,
+  locale: Locale = "en",
   dataFile = DEFAULT_DATA_FILE,
 ): Promise<OpenPoolsResult> {
   validateDate(queryDate);
   validateTime(queryTime);
 
   const pools = await loadPools(dataFile);
-  const matches = findOpenPools(pools, queryDate, queryTime);
+  const matches = findOpenPools(pools, queryDate, queryTime, locale);
 
   return {
     query_date: queryDate,
