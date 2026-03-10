@@ -1,26 +1,16 @@
 # Amsterdam Pools
 
-Phone-first Amsterdam pool lookup, now running on a TypeScript stack that can later support an Expo mobile app.
+Amsterdam pool lookup built with TypeScript for web and mobile.
 
-## Current Architecture
+## Architecture
 
 - `data/pools.json`: source of truth for pool records
 - `packages/core/src/index.ts`: shared query logic and types
 - `apps/api/src/server.ts`: Fastify web app and JSON API
+- `apps/mobile/App.tsx`: Expo / React Native client
 - `render.yaml`: Render deployment config for the Node service
 
-Python is still present only for local CLI and data maintenance:
-
-- `scripts/find_open_pools.py`
-- `scripts/update_pools.py`
-
-The intended long-term path is:
-
-- `packages/core`: shared logic
-- `apps/api`: backend for web and mobile
-- `apps/mobile`: Expo / React Native app
-
-## Run The TypeScript App Locally
+## Run The Web App Locally
 
 You need Node.js 20+.
 
@@ -61,22 +51,8 @@ Start Expo:
 npm run mobile
 ```
 
-The first screen asks for:
-
-- API base URL
-- weekday
-- time
-
-The API base URL is stored locally on the device, so after you enter your LAN IP or Render URL once, the app will remember it.
-
-For local phone testing, use your computer's LAN IP instead of `127.0.0.1`.
-For example:
-
-```text
-http://192.168.x.x:3000
-```
-
-Later, you can replace that with your Render URL.
+The mobile app is configured to use the deployed API URL by default.
+For local testing, start the web app with `npm run dev` and point the mobile app to your computer's LAN IP if needed.
 
 ## Pool Data Format
 
@@ -123,17 +99,3 @@ Recurring weekly availability is also supported:
 4. Deploy and open the generated URL on your phone.
 
 The current Render config builds with `npm install && npm run build` and starts with `npm start`.
-
-## Transitional Python Commands
-
-The old CLI still works:
-
-```bash
-./pool-open --date 2026-03-10 --time 19:30
-```
-
-And manual data updates still use:
-
-```bash
-python3 scripts/update_pools.py list
-```
