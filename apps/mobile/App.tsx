@@ -12,7 +12,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from "react-native";
 
@@ -44,15 +43,13 @@ type OpenPoolsResult = {
 };
 
 type QueryInput = {
-  apiBaseUrl?: string;
   weekday?: Weekday;
   time?: string;
   minLoadingMs?: number;
 };
 
-const DEFAULT_API_BASE_URL = "http://127.0.0.1:3000";
-const LOCAL_API_BASE_URL = "http://192.168.178.49:3000";
-const API_BASE_URL_STORAGE_KEY = "api_base_url";
+const PUBLIC_API_BASE_URL =
+  process.env.EXPO_PUBLIC_API_BASE_URL ?? "https://pool-finder.onrender.com";
 const FAVORITE_POOLS_STORAGE_KEY = "favorite_pools";
 
 function titleWeekday(value: string): string {
@@ -95,7 +92,6 @@ function delay(ms: number): Promise<void> {
 }
 
 export default function App() {
-  const [apiBaseUrl, setApiBaseUrl] = useState(DEFAULT_API_BASE_URL);
   const [weekday, setWeekday] = useState<Weekday>(currentWeekday());
   const [time, setTime] = useState(currentTime());
   const [showTimePicker, setShowTimePicker] = useState(false);
@@ -111,11 +107,10 @@ export default function App() {
     setError("");
 
     try {
-      const nextBaseUrl = overrides.apiBaseUrl ?? apiBaseUrl;
       const nextWeekday = overrides.weekday ?? weekday;
       const nextTime = overrides.time ?? time;
       const minLoadingMs = overrides.minLoadingMs ?? 0;
-      const trimmedBaseUrl = nextBaseUrl.trim().replace(/\/$/, "");
+      const trimmedBaseUrl = PUBLIC_API_BASE_URL.trim().replace(/\/$/, "");
       const [response] = await Promise.all([
         fetch(`${trimmedBaseUrl}/api/open?weekday=${nextWeekday}&time=${encodeURIComponent(nextTime)}`),
         delay(minLoadingMs),
@@ -139,19 +134,12 @@ export default function App() {
   useEffect(() => {
     async function initialize() {
       try {
-        const savedBaseUrl = await AsyncStorage.getItem(API_BASE_URL_STORAGE_KEY);
         const savedFavorites = await AsyncStorage.getItem(FAVORITE_POOLS_STORAGE_KEY);
 
         if (savedFavorites) {
           setFavoritePools(JSON.parse(savedFavorites) as string[]);
         }
-
-        if (savedBaseUrl) {
-          setApiBaseUrl(savedBaseUrl);
-          await fetchPools({ apiBaseUrl: savedBaseUrl });
-          return;
-        }
-        await fetchPools({ apiBaseUrl: DEFAULT_API_BASE_URL });
+        await fetchPools();
       } finally {
         setInitializing(false);
       }
@@ -159,16 +147,6 @@ export default function App() {
 
     void initialize();
   }, []);
-
-  async function saveApiBaseUrl(value: string) {
-    const normalized = value.trim();
-    setApiBaseUrl(value);
-    await AsyncStorage.setItem(API_BASE_URL_STORAGE_KEY, normalized);
-  }
-
-  async function useLocalApi() {
-    await saveApiBaseUrl(LOCAL_API_BASE_URL);
-  }
 
   async function toggleFavorite(poolName: string) {
     const nextFavorites = favoritePools.includes(poolName)
@@ -222,34 +200,11 @@ export default function App() {
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.hero}>
           <Text style={styles.eyebrow}>Amsterdam Pools</Text>
-          <Text style={styles.title}>Swimming pool finder.</Text>
-          <Text style={styles.lede}>
-            Minimal Expo client for the same API used by the web app.
-          </Text>
+          <Text style={styles.title}>Swimming pool finder</Text>
+          <Text style={styles.lede}>Amsterdam pools timetable</Text>
         </View>
 
         <View style={styles.panel}>
-          <Text style={styles.label}>API base URL</Text>
-          <TextInput
-            autoCapitalize="none"
-            autoCorrect={false}
-            onChangeText={(value: string) => {
-              void saveApiBaseUrl(value);
-            }}
-            style={styles.input}
-            value={apiBaseUrl}
-          />
-          <Text style={styles.hint}>
-            Use your Render URL later. For local phone testing, replace 127.0.0.1 with your
-            computer&apos;s LAN IP.
-          </Text>
-          <Pressable
-            onPress={() => void useLocalApi()}
-            style={({ pressed }) => [styles.tertiaryButton, pressed && styles.linkPressed]}
-          >
-            <Text style={styles.tertiaryButtonText}>Use local API</Text>
-          </Pressable>
-
           <Text style={styles.label}>Day</Text>
           <View style={styles.weekdayRow}>
             {WEEKDAYS.map((day) => {
@@ -438,22 +393,12 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   label: {
-    marginTop: 4,
+    marginTop: 2,
     color: "#5f696e",
     fontSize: 12,
     fontWeight: "800",
     letterSpacing: 1.2,
     textTransform: "uppercase",
-  },
-  input: {
-    backgroundColor: "#ffffff",
-    borderWidth: 1,
-    borderColor: "#d8d0c4",
-    borderRadius: 14,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    color: "#182126",
-    fontSize: 16,
   },
   inputButton: {
     backgroundColor: "#ffffff",
@@ -470,12 +415,6 @@ const styles = StyleSheet.create({
   controlPressed: {
     transform: [{ scale: 0.995 }],
     opacity: 0.96,
-  },
-  hint: {
-    color: "#5f696e",
-    fontSize: 13,
-    lineHeight: 18,
-    marginBottom: 4,
   },
   weekdayRow: {
     flexDirection: "row",

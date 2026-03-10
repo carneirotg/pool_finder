@@ -104,9 +104,14 @@ function renderPage(input: {
   pools: Array<{ name: string; price_eur: number | null; swim_until: string; notes: string; warning: string }>;
   error?: string;
 }): string {
-  const weekdayOptions = WEEKDAYS.map((weekday) => {
+  const weekdayButtons = WEEKDAYS.map((weekday) => {
     const selected = weekday === input.queryWeekday ? " selected" : "";
-    return `<option value="${weekday}"${selected}>${titleWeekday(weekday)}</option>`;
+    return `
+      <label class="weekday-chip${selected}">
+        <input type="radio" name="weekday" value="${weekday}"${selected ? " checked" : ""}>
+        <span>${titleWeekday(weekday).slice(0, 3)}</span>
+      </label>
+    `;
   }).join("");
 
   const cards =
@@ -161,7 +166,7 @@ function renderPage(input: {
         * { box-sizing: border-box; }
         body {
           margin: 0;
-          font-family: Georgia, "Times New Roman", serif;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
           background:
             radial-gradient(circle at top left, rgba(10, 127, 69, 0.10), transparent 30%),
             linear-gradient(180deg, #efe7d7 0%, var(--bg) 100%);
@@ -194,8 +199,7 @@ function renderPage(input: {
           letter-spacing: .08em;
           color: var(--muted);
         }
-        .query-form input,
-        .query-form select {
+        .query-form input {
           width: 100%;
           padding: 14px 16px;
           border-radius: 14px;
@@ -203,6 +207,36 @@ function renderPage(input: {
           background: #fff;
           font: inherit;
           color: var(--ink);
+        }
+        .weekday-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+        .weekday-chip {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 58px;
+          padding: 10px 14px;
+          border-radius: 999px;
+          border: 1px solid var(--line);
+          background: #fff;
+          color: var(--ink);
+          font-weight: 700;
+          cursor: pointer;
+        }
+        .weekday-chip input {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+          pointer-events: none;
+        }
+        .weekday-chip.selected {
+          background: var(--accent);
+          border-color: var(--accent);
+          color: white;
         }
         .actions { display: flex; gap: 10px; padding-top: 4px; }
         .actions button, .actions a {
@@ -259,17 +293,17 @@ function renderPage(input: {
       <main class="shell">
         <section class="hero">
           <p class="eyebrow">Amsterdam Pools</p>
-          <h1>Find lane swimming from your phone.</h1>
-          <p class="lede">TypeScript API and web layer, ready for a later Expo mobile app.</p>
+          <h1>Swimming pool finder</h1>
+          <p class="lede">Amsterdam pools timetable</p>
         </section>
 
         <section class="panel">
           <form class="query-form" method="get" action="/">
             <label>
               <span>Day</span>
-              <select name="weekday">
-                ${weekdayOptions}
-              </select>
+              <div class="weekday-row">
+                ${weekdayButtons}
+              </div>
             </label>
             <label>
               <span>Time</span>
