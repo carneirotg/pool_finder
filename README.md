@@ -1,21 +1,84 @@
 # Amsterdam Pools
 
-Minimal local-first Python workflow for answering:
+Phone-first Amsterdam pool lookup, now running on a TypeScript stack that can later support an Expo mobile app.
 
-- Which pools are open at a given date/time?
-- Until when can I swim there?
-- What is the ticket price?
+## Current Architecture
 
-## Files
+- `data/pools.json`: source of truth for pool records
+- `packages/core/src/index.ts`: shared query logic and types
+- `apps/api/src/server.ts`: Fastify web app and JSON API
+- `render.yaml`: Render deployment config for the Node service
 
-- `data/pools.json`: pool records
-- `pool_query.py`: shared query logic
-- `scripts/find_open_pools.py`: query pools by date/time
-- `scripts/update_pools.py`: helper for updating pool records
-- `app.py`: mobile-friendly Flask app
-- `render.yaml`: Render deployment config
+Python is still present only for local CLI and data maintenance:
 
-## Pool data format
+- `scripts/find_open_pools.py`
+- `scripts/update_pools.py`
+
+The intended long-term path is:
+
+- `packages/core`: shared logic
+- `apps/api`: backend for web and mobile
+- `apps/mobile`: Expo / React Native app
+
+## Run The TypeScript App Locally
+
+You need Node.js 20+.
+
+```bash
+npm install
+npm run dev
+```
+
+Then open [http://127.0.0.1:3000](http://127.0.0.1:3000).
+
+Production-style build:
+
+```bash
+npm run build
+npm start
+```
+
+JSON endpoint example:
+
+```bash
+curl "http://127.0.0.1:3000/api/open?weekday=tuesday&time=19:30"
+```
+
+## Run The Expo App
+
+The mobile app lives in `apps/mobile`.
+Because Expo is running inside a workspace with hoisted dependencies, the repo root also contains a tiny `App.tsx` that forwards to `apps/mobile/App.tsx`.
+
+Install dependencies from the repo root:
+
+```bash
+npm install
+```
+
+Start Expo:
+
+```bash
+npm run mobile
+```
+
+The first screen asks for:
+
+- API base URL
+- weekday
+- time
+
+The API base URL is stored locally on the device, so after you enter your LAN IP or Render URL once, the app will remember it.
+
+For local phone testing, use your computer's LAN IP instead of `127.0.0.1`.
+For example:
+
+```text
+http://192.168.x.x:3000
+```
+
+Later, you can replace that with your Render URL.
+
+## Pool Data Format
 
 Each pool record looks like this:
 
@@ -25,6 +88,7 @@ Each pool record looks like this:
   "price_eur": 6.5,
   "source_url": "https://example.nl/pool",
   "last_updated": "2026-03-10",
+  "warning": "Summer closure possible in August; verify official site.",
   "availability": [
     {
       "date": "2026-03-10",
@@ -49,86 +113,27 @@ Recurring weekly availability is also supported:
 }
 ```
 
-## Usage
-
-Show pools open at a specific moment:
-
-```bash
-python3 scripts/find_open_pools.py --date 2026-03-10 --time 17:30
-```
-
-Short wrapper from the repo root:
-
-```bash
-./pool-open --date 2026-03-10 --time 17:30
-```
-
-If you provide only `--time`, the script uses today's date:
-
-```bash
-./pool-open --time 17:30
-```
-
-Show pools open right now:
-
-```bash
-./pool-open --now
-```
-
-Run the web app locally:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-flask --app app run --debug
-```
-
-Then open [http://127.0.0.1:5000](http://127.0.0.1:5000).
-
-JSON endpoint:
-
-```bash
-curl "http://127.0.0.1:5000/api/open?date=2026-03-10&time=19:30"
-```
-
-Add or update a pool manually:
-
-```bash
-python3 scripts/update_pools.py add \
-  --name "Examplebad" \
-  --price 6.5 \
-  --source-url "https://example.nl/pool"
-```
-
-Add an availability window:
-
-```bash
-python3 scripts/update_pools.py add-slot \
-  --name "Examplebad" \
-  --date 2026-03-10 \
-  --opens-at 17:00 \
-  --closes-at 21:00 \
-  --swim-until 20:45 \
-  --notes "Lane swimming"
-```
-
-Add a recurring weekly availability window:
-
-```bash
-python3 scripts/update_pools.py add-weekly-slot \
-  --name "SportPlaza Mercator" \
-  --weekday monday \
-  --opens-at 07:00 \
-  --closes-at 08:30 \
-  --notes "Banenzwemmen"
-```
+`warning` is optional and intended for seasonal closures or low-confidence schedule periods.
 
 ## Deploy To Render
 
 1. Push this repo to GitHub.
 2. In Render, create a new Blueprint or Web Service from the repo.
-3. Render will pick up `render.yaml`.
-4. Deploy the app and open the generated URL on your phone.
+3. Render will use `render.yaml`.
+4. Deploy and open the generated URL on your phone.
 
-The app uses the free Render plan in `render.yaml`, which is a good fit for this small hobby project.
+The current Render config builds with `npm install && npm run build` and starts with `npm start`.
+
+## Transitional Python Commands
+
+The old CLI still works:
+
+```bash
+./pool-open --date 2026-03-10 --time 19:30
+```
+
+And manual data updates still use:
+
+```bash
+python3 scripts/update_pools.py list
+```

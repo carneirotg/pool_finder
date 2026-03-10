@@ -1,0 +1,5 @@
+{
+  "name": "@amsterdam-pools/core",
+  "private": true,
+  "main": "src/index.ts"
+}

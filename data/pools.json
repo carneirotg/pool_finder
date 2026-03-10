@@ -1,0 +1,969 @@
+[
+  {
+    "name": "Zuiderbad",
+    "price_eur": 6.4,
+    "source_url": "https://www.amsterdam.nl/zuiderbad/",
+    "last_updated": "2026-03-10",
+    "availability": [
+      {
+        "weekday": "monday",
+        "opens_at": "07:00",
+        "closes_at": "11:00",
+        "swim_until": "11:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "monday",
+        "opens_at": "12:00",
+        "closes_at": "15:30",
+        "swim_until": "15:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "monday",
+        "opens_at": "15:30",
+        "closes_at": "18:00",
+        "swim_until": "18:00",
+        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "07:00",
+        "closes_at": "13:00",
+        "swim_until": "13:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "15:30",
+        "closes_at": "18:00",
+        "swim_until": "18:00",
+        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "18:00",
+        "closes_at": "22:00",
+        "swim_until": "22:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "wednesday",
+        "opens_at": "07:00",
+        "closes_at": "09:00",
+        "swim_until": "09:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "wednesday",
+        "opens_at": "12:00",
+        "closes_at": "16:00",
+        "swim_until": "16:00",
+        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+      },
+      {
+        "weekday": "wednesday",
+        "opens_at": "18:45",
+        "closes_at": "22:00",
+        "swim_until": "22:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "07:00",
+        "closes_at": "15:30",
+        "swim_until": "15:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "15:30",
+        "closes_at": "18:00",
+        "swim_until": "18:00",
+        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "19:30",
+        "closes_at": "22:00",
+        "swim_until": "22:00",
+        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+      },
+      {
+        "weekday": "friday",
+        "opens_at": "07:00",
+        "closes_at": "15:30",
+        "swim_until": "15:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "friday",
+        "opens_at": "15:30",
+        "closes_at": "18:00",
+        "swim_until": "18:00",
+        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+      },
+      {
+        "weekday": "friday",
+        "opens_at": "19:30",
+        "closes_at": "22:00",
+        "swim_until": "22:00",
+        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+      },
+      {
+        "weekday": "saturday",
+        "opens_at": "08:00",
+        "closes_at": "15:00",
+        "swim_until": "15:00",
+        "notes": "Banenzwemmen - minder water beschikbaar door zwemlessen"
+      },
+      {
+        "weekday": "sunday",
+        "opens_at": "13:00",
+        "closes_at": "15:30",
+        "swim_until": "15:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "sunday",
+        "opens_at": "16:30",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Naaktzwemmen"
+      }
+    ]
+  },
+  {
+    "name": "Het Marnixbad",
+    "price_eur": 6.4,
+    "source_url": "https://hetmarnix.nl/",
+    "last_updated": "2026-03-10",
+    "availability": [
+      {
+        "date": "2026-03-09",
+        "opens_at": "07:00",
+        "closes_at": "10:00",
+        "swim_until": "10:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-09",
+        "opens_at": "11:00",
+        "closes_at": "17:00",
+        "swim_until": "17:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-10",
+        "opens_at": "07:00",
+        "closes_at": "16:30",
+        "swim_until": "16:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-10",
+        "opens_at": "20:00",
+        "closes_at": "22:15",
+        "swim_until": "22:15",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-11",
+        "opens_at": "07:00",
+        "closes_at": "16:00",
+        "swim_until": "16:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-11",
+        "opens_at": "21:00",
+        "closes_at": "22:00",
+        "swim_until": "22:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-12",
+        "opens_at": "07:00",
+        "closes_at": "09:00",
+        "swim_until": "09:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-12",
+        "opens_at": "10:00",
+        "closes_at": "13:00",
+        "swim_until": "13:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-12",
+        "opens_at": "15:00",
+        "closes_at": "15:45",
+        "swim_until": "15:45",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-13",
+        "opens_at": "07:00",
+        "closes_at": "10:00",
+        "swim_until": "10:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-13",
+        "opens_at": "11:00",
+        "closes_at": "14:00",
+        "swim_until": "14:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-13",
+        "opens_at": "14:45",
+        "closes_at": "17:00",
+        "swim_until": "17:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-14",
+        "opens_at": "11:45",
+        "closes_at": "15:00",
+        "swim_until": "15:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-15",
+        "opens_at": "12:00",
+        "closes_at": "17:00",
+        "swim_until": "17:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-16",
+        "opens_at": "07:00",
+        "closes_at": "10:00",
+        "swim_until": "10:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-16",
+        "opens_at": "11:00",
+        "closes_at": "17:00",
+        "swim_until": "17:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-17",
+        "opens_at": "07:00",
+        "closes_at": "16:30",
+        "swim_until": "16:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-17",
+        "opens_at": "20:00",
+        "closes_at": "22:15",
+        "swim_until": "22:15",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-18",
+        "opens_at": "07:00",
+        "closes_at": "16:00",
+        "swim_until": "16:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-18",
+        "opens_at": "21:00",
+        "closes_at": "22:00",
+        "swim_until": "22:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-19",
+        "opens_at": "07:00",
+        "closes_at": "09:00",
+        "swim_until": "09:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-19",
+        "opens_at": "10:00",
+        "closes_at": "13:00",
+        "swim_until": "13:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-19",
+        "opens_at": "15:00",
+        "closes_at": "15:45",
+        "swim_until": "15:45",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-20",
+        "opens_at": "07:00",
+        "closes_at": "10:00",
+        "swim_until": "10:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-20",
+        "opens_at": "11:00",
+        "closes_at": "14:00",
+        "swim_until": "14:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-20",
+        "opens_at": "14:45",
+        "closes_at": "17:00",
+        "swim_until": "17:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-21",
+        "opens_at": "11:45",
+        "closes_at": "15:45",
+        "swim_until": "15:45",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-22",
+        "opens_at": "12:00",
+        "closes_at": "17:00",
+        "swim_until": "17:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-23",
+        "opens_at": "07:00",
+        "closes_at": "10:00",
+        "swim_until": "10:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-23",
+        "opens_at": "11:00",
+        "closes_at": "17:00",
+        "swim_until": "17:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-24",
+        "opens_at": "07:00",
+        "closes_at": "16:30",
+        "swim_until": "16:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-24",
+        "opens_at": "20:00",
+        "closes_at": "22:15",
+        "swim_until": "22:15",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-25",
+        "opens_at": "07:00",
+        "closes_at": "16:00",
+        "swim_until": "16:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-25",
+        "opens_at": "21:00",
+        "closes_at": "22:00",
+        "swim_until": "22:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-26",
+        "opens_at": "07:00",
+        "closes_at": "09:00",
+        "swim_until": "09:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-26",
+        "opens_at": "10:00",
+        "closes_at": "13:00",
+        "swim_until": "13:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-26",
+        "opens_at": "15:00",
+        "closes_at": "15:45",
+        "swim_until": "15:45",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-27",
+        "opens_at": "07:00",
+        "closes_at": "10:00",
+        "swim_until": "10:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-27",
+        "opens_at": "11:00",
+        "closes_at": "14:00",
+        "swim_until": "14:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-27",
+        "opens_at": "14:45",
+        "closes_at": "17:00",
+        "swim_until": "17:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-28",
+        "opens_at": "11:45",
+        "closes_at": "15:45",
+        "swim_until": "15:45",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-29",
+        "opens_at": "12:00",
+        "closes_at": "17:00",
+        "swim_until": "17:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-30",
+        "opens_at": "07:00",
+        "closes_at": "10:00",
+        "swim_until": "10:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "date": "2026-03-30",
+        "opens_at": "11:00",
+        "closes_at": "17:00",
+        "swim_until": "17:00",
+        "notes": "Banenzwemmen"
+      }
+    ]
+  },
+  {
+    "name": "Sloterparkbad",
+    "price_eur": 6.4,
+    "source_url": "https://www.optisport.nl/het-sloterparkbad-amsterdam",
+    "last_updated": "2026-03-10",
+    "availability": [
+      {
+        "weekday": "monday",
+        "opens_at": "06:00",
+        "closes_at": "07:00",
+        "swim_until": "07:00",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      },
+      {
+        "weekday": "monday",
+        "opens_at": "09:15",
+        "closes_at": "12:00",
+        "swim_until": "12:00",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "06:00",
+        "closes_at": "07:00",
+        "swim_until": "07:00",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "09:15",
+        "closes_at": "12:00",
+        "swim_until": "12:00",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "19:30",
+        "closes_at": "20:30",
+        "swim_until": "20:30",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      },
+      {
+        "weekday": "wednesday",
+        "opens_at": "06:00",
+        "closes_at": "07:00",
+        "swim_until": "07:00",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      },
+      {
+        "weekday": "wednesday",
+        "opens_at": "09:15",
+        "closes_at": "12:00",
+        "swim_until": "12:00",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      },
+      {
+        "weekday": "wednesday",
+        "opens_at": "19:00",
+        "closes_at": "20:00",
+        "swim_until": "20:00",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "06:00",
+        "closes_at": "07:00",
+        "swim_until": "07:00",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "09:15",
+        "closes_at": "12:00",
+        "swim_until": "12:00",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "19:30",
+        "closes_at": "20:30",
+        "swim_until": "20:30",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      },
+      {
+        "weekday": "friday",
+        "opens_at": "06:00",
+        "closes_at": "07:00",
+        "swim_until": "07:00",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      },
+      {
+        "weekday": "friday",
+        "opens_at": "09:15",
+        "closes_at": "12:00",
+        "swim_until": "12:00",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      },
+      {
+        "weekday": "saturday",
+        "opens_at": "09:15",
+        "closes_at": "11:15",
+        "swim_until": "11:15",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      },
+      {
+        "weekday": "sunday",
+        "opens_at": "08:00",
+        "closes_at": "11:00",
+        "swim_until": "11:00",
+        "notes": "Banenzwemmen (secondary source, checked 2026-02-23)"
+      }
+    ]
+  },
+  {
+    "name": "SportPlaza Mercator",
+    "price_eur": 8.5,
+    "source_url": "https://mercator.sportfondsen.nl/",
+    "last_updated": "2026-03-10",
+    "availability": [
+      {
+        "weekday": "monday",
+        "opens_at": "12:00",
+        "closes_at": "13:00",
+        "swim_until": "13:00",
+        "notes": "Banenzwemmen sportief & ontspannen"
+      },
+      {
+        "weekday": "monday",
+        "opens_at": "19:00",
+        "closes_at": "21:00",
+        "swim_until": "21:00",
+        "notes": "Banenzwemmen sportief & ontspannen"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "07:00",
+        "closes_at": "11:00",
+        "swim_until": "11:00",
+        "notes": "Banenzwemmen sportief & ontspannen"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "12:00",
+        "closes_at": "14:00",
+        "swim_until": "14:00",
+        "notes": "Banenzwemmen sportief & ontspannen"
+      },
+      {
+        "weekday": "wednesday",
+        "opens_at": "12:00",
+        "closes_at": "13:00",
+        "swim_until": "13:00",
+        "notes": "Banenzwemmen sportief & ontspannen"
+      },
+      {
+        "weekday": "wednesday",
+        "opens_at": "19:00",
+        "closes_at": "21:00",
+        "swim_until": "21:00",
+        "notes": "Banenzwemmen sportief & ontspannen"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "07:00",
+        "closes_at": "11:00",
+        "swim_until": "11:00",
+        "notes": "Banenzwemmen sportief & ontspannen"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "12:00",
+        "closes_at": "14:00",
+        "swim_until": "14:00",
+        "notes": "Banenzwemmen sportief & ontspannen"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "19:00",
+        "closes_at": "21:00",
+        "swim_until": "21:00",
+        "notes": "Banenzwemmen sportief & ontspannen"
+      },
+      {
+        "weekday": "friday",
+        "opens_at": "09:00",
+        "closes_at": "13:00",
+        "swim_until": "13:00",
+        "notes": "Banenzwemmen sportief & ontspannen"
+      },
+      {
+        "weekday": "saturday",
+        "opens_at": "12:00",
+        "closes_at": "13:00",
+        "swim_until": "13:00",
+        "notes": "Banenzwemmen sportief & ontspannen"
+      },
+      {
+        "weekday": "sunday",
+        "opens_at": "09:00",
+        "closes_at": "11:00",
+        "swim_until": "11:00",
+        "notes": "Banenzwemmen sportief & ontspannen"
+      }
+    ]
+  },
+  {
+    "name": "Flevoparkbad",
+    "price_eur": 6.4,
+    "source_url": "https://www.amsterdam.nl/flevoparkbad/banenzwemmen/",
+    "last_updated": "2026-03-10",
+    "availability": [
+      {
+        "weekday": "monday",
+        "opens_at": "10:00",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "10:00",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "wednesday",
+        "opens_at": "10:00",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "10:00",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "friday",
+        "opens_at": "10:00",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "saturday",
+        "opens_at": "10:00",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "sunday",
+        "opens_at": "10:00",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Banenzwemmen"
+      }
+    ]
+  },
+  {
+    "name": "Brediusbad",
+    "price_eur": 6.4,
+    "source_url": "https://www.amsterdam.nl/brediusbad/banenzwemmen-brediusbad/",
+    "last_updated": "2026-03-10",
+    "availability": [
+      {
+        "weekday": "monday",
+        "opens_at": "10:00",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "07:00",
+        "closes_at": "10:00",
+        "swim_until": "10:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "10:00",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "18:00",
+        "closes_at": "20:00",
+        "swim_until": "20:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "wednesday",
+        "opens_at": "10:00",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "07:00",
+        "closes_at": "10:00",
+        "swim_until": "10:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "10:00",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "18:00",
+        "closes_at": "20:00",
+        "swim_until": "20:00",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "friday",
+        "opens_at": "10:00",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "saturday",
+        "opens_at": "10:00",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Banenzwemmen"
+      },
+      {
+        "weekday": "sunday",
+        "opens_at": "10:00",
+        "closes_at": "17:30",
+        "swim_until": "17:30",
+        "notes": "Banenzwemmen"
+      }
+    ]
+  },
+  {
+    "name": "De Mirandabad",
+    "price_eur": 6.4,
+    "source_url": "https://www.amsterdam.nl/demirandabad/activiteiten/banenzwemmen/",
+    "last_updated": "2026-03-10",
+    "availability": [
+      {
+        "weekday": "monday",
+        "opens_at": "07:00",
+        "closes_at": "09:00",
+        "swim_until": "09:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "monday",
+        "opens_at": "11:00",
+        "closes_at": "13:30",
+        "swim_until": "13:30",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "monday",
+        "opens_at": "13:30",
+        "closes_at": "20:00",
+        "swim_until": "20:00",
+        "notes": "Banenzwemmen - 3 banen beschikbaar"
+      },
+      {
+        "weekday": "monday",
+        "opens_at": "21:00",
+        "closes_at": "22:00",
+        "swim_until": "22:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "07:00",
+        "closes_at": "19:00",
+        "swim_until": "19:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "wednesday",
+        "opens_at": "07:00",
+        "closes_at": "13:00",
+        "swim_until": "13:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "07:00",
+        "closes_at": "09:00",
+        "swim_until": "09:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "12:00",
+        "closes_at": "15:00",
+        "swim_until": "15:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "friday",
+        "opens_at": "07:00",
+        "closes_at": "09:00",
+        "swim_until": "09:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "friday",
+        "opens_at": "12:00",
+        "closes_at": "15:00",
+        "swim_until": "15:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "friday",
+        "opens_at": "19:00",
+        "closes_at": "22:00",
+        "swim_until": "22:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "sunday",
+        "opens_at": "12:45",
+        "closes_at": "14:30",
+        "swim_until": "14:30",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      }
+    ]
+  },
+  {
+    "name": "Noorderparkbad",
+    "price_eur": 6.4,
+    "source_url": "https://www.amsterdam.nl/noorderparkbad/activiteiten/banenzwemmen/",
+    "last_updated": "2026-03-10",
+    "availability": [
+      {
+        "weekday": "monday",
+        "opens_at": "07:00",
+        "closes_at": "14:00",
+        "swim_until": "14:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "monday",
+        "opens_at": "21:00",
+        "closes_at": "22:00",
+        "swim_until": "22:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "07:00",
+        "closes_at": "14:00",
+        "swim_until": "14:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "tuesday",
+        "opens_at": "20:00",
+        "closes_at": "22:00",
+        "swim_until": "22:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "wednesday",
+        "opens_at": "07:00",
+        "closes_at": "14:00",
+        "swim_until": "14:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "wednesday",
+        "opens_at": "21:00",
+        "closes_at": "22:00",
+        "swim_until": "22:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "thursday",
+        "opens_at": "08:00",
+        "closes_at": "14:00",
+        "swim_until": "14:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "friday",
+        "opens_at": "07:00",
+        "closes_at": "14:00",
+        "swim_until": "14:00",
+        "notes": "Banenzwemmen - 25-meterbad binnen"
+      },
+      {
+        "weekday": "sunday",
+        "opens_at": "10:30",
+        "closes_at": "12:00",
+        "swim_until": "12:00",
+        "notes": "Banenzwemmen - Sportbad"
+      },
+      {
+        "weekday": "sunday",
+        "opens_at": "10:30",
+        "closes_at": "14:00",
+        "swim_until": "14:00",
+        "notes": "Banenzwemmen - Verenigingsbad"
+      }
+    ]
+  }
+]

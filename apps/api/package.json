@@ -1,0 +1,5 @@
+{
+  "name": "@amsterdam-pools/api",
+  "private": true,
+  "main": "src/server.ts"
+}
