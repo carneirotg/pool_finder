@@ -249,22 +249,23 @@ function renderPage(input: {
           color: white;
         }
         .controls-cluster {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          justify-content: center;
+          width: 100%;
+          display: grid;
           gap: 12px;
+          justify-items: center;
         }
         .time-field {
+          width: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
         }
         .time-field input {
-          width: min(220px, 100%);
+          width: min(240px, 100%);
         }
         .actions {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
           justify-content: center;
           gap: 10px;
@@ -322,7 +323,20 @@ function renderPage(input: {
         .error { margin: 14px 2px 0; color: #9c2e1d; }
         .empty h2, .empty p { margin: 0; }
         .empty p { margin-top: 8px; color: var(--muted); }
+        @media (max-width: 639px) {
+          .summary {
+            grid-template-columns: 1fr;
+          }
+        }
         @media (min-width: 640px) {
+          .controls-cluster {
+            width: auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+          }
           .controls-cluster {
             gap: 16px;
           }
