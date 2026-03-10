@@ -182,8 +182,8 @@ function renderPage(input: {
           text-transform: uppercase;
           color: var(--accent-strong);
         }
-        .hero h1 { margin: 0; font-size: clamp(2.2rem, 6vw, 4rem); line-height: .95; max-width: 10ch; }
-        .lede { max-width: 34ch; margin: 14px 0 0; color: var(--muted); font-size: 1.05rem; }
+        .hero h1 { margin: 0; font-size: clamp(2.2rem, 6vw, 4rem); line-height: .95; }
+        .lede { margin: 14px 0 0; color: var(--muted); font-size: 1.05rem; }
         .panel, .summary, .pool-card {
           background: var(--paper);
           border: 1px solid var(--line);
@@ -191,6 +191,7 @@ function renderPage(input: {
         }
         .panel { padding: 16px; border-radius: 20px; }
         .query-form { display: grid; gap: 12px; }
+        .query-row { display: grid; gap: 12px; }
         .query-form label { display: grid; gap: 6px; }
         .query-form span, .summary-label {
           font-size: .85rem;
@@ -239,6 +240,9 @@ function renderPage(input: {
           border-color: var(--accent);
           color: white;
         }
+        .weekday-chip.selected span {
+          color: white;
+        }
         .actions { display: flex; gap: 10px; padding-top: 4px; }
         .actions button, .actions a {
           appearance: none;
@@ -259,6 +263,10 @@ function renderPage(input: {
           display: grid;
           grid-template-columns: 1fr auto;
           gap: 16px;
+          align-items: center;
+        }
+        .summary p {
+          margin: 0;
         }
         .summary-value { margin: 4px 0 0; font-size: 1.1rem; font-weight: 700; }
         .results { display: grid; gap: 14px; margin-top: 18px; }
@@ -285,9 +293,11 @@ function renderPage(input: {
         .empty h2, .empty p { margin: 0; }
         .empty p { margin-top: 8px; color: var(--muted); }
         @media (min-width: 640px) {
-          .query-form { grid-template-columns: minmax(0, 1.2fr) 1fr auto; align-items: end; }
-          .actions { padding-top: 0; }
-          .weekday-row { flex-wrap: nowrap; }
+          .query-row.controls {
+            grid-template-columns: 220px 1fr auto;
+            align-items: end;
+          }
+          .actions { padding-top: 0; justify-content: flex-end; }
         }
       </style>
     </head>
@@ -301,19 +311,23 @@ function renderPage(input: {
 
         <section class="panel">
           <form class="query-form" method="get" action="/" id="query-form">
-            <label>
-              <span>Day</span>
-              <div class="weekday-row">
-                ${weekdayButtons}
+            <div class="query-row">
+              <label class="day-field">
+                <span>Day</span>
+                <div class="weekday-row">
+                  ${weekdayButtons}
+                </div>
+              </label>
+            </div>
+            <div class="query-row controls">
+              <label class="time-field">
+                <span>Time</span>
+                <input type="time" name="time" value="${escapeHtml(input.queryTime)}">
+              </label>
+              <div class="actions">
+                <button type="submit">Check pools</button>
+                <a href="/?now=1">Now</a>
               </div>
-            </label>
-            <label>
-              <span>Time</span>
-              <input type="time" name="time" value="${escapeHtml(input.queryTime)}">
-            </label>
-            <div class="actions">
-              <button type="submit">Check pools</button>
-              <a href="/?now=1">Now</a>
             </div>
           </form>
           ${error}

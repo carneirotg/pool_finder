@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "tsx apps/api/src/server.ts",
+    "dev": "node --watch --import tsx apps/api/src/server.ts",
     "mobile": "npm --workspace @amsterdam-pools/mobile run start",
     "build": "tsc -p tsconfig.json",
     "start": "node dist/apps/api/src/server.js"
